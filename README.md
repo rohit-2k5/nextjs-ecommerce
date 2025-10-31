@@ -2,6 +2,8 @@
 **Author:** Rohit kumar  
 **Date:** October 31, 2025  
 
+visit : "";
+
 A modern full-stack **E-Commerce Web Application** built using **Next.js (App Router)**, **MongoDB**, and **Tailwind CSS**.  
 It demonstrates product listing, filtering, search, sorting, and an admin dashboard for product management (CRUD).  
 
@@ -76,25 +78,6 @@ Runtime: Node.js 20+
 ✅ MongoDB integration with Mongoose
 ✅ Fully responsive layout using Tailwind
 
-📦 Deployment
-This project can be deployed easily on Vercel or any Node.js-compatible host.
-Make sure to set your environment variables (MONGODB_URI, ADMIN_KEY) in the deployment settings.
-
-📜 Submission Instructions
-Submit your GitHub repository link.
-
-Ensure the project runs locally using:
-
-bash
-Copy code
-npm install && npm run dev
-Include your name and date in this README.
-
-Deadline: 4 Days
-
-yaml
-Copy code
 
 ---
 
-✅ Just copy this entire block and paste it directly into your `README.md` file in VS Code — it’s formatted, styled, and submission-ready.

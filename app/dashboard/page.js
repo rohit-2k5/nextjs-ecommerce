@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 async function getProducts() {
-  const res = await fetch("http://localhost:3000/api/products", { cache: "no-store" });
+  const res = await fetch("`${process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL + '/api/products' : '/api/products'", { cache: "no-store" });
   if (!res.ok) return [];
   return res.json();
 }
