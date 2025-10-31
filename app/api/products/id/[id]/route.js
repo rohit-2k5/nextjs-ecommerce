@@ -3,11 +3,6 @@ import { connectDB } from "@/lib/db";
 import { Product } from "@/models/Product";
 
 export async function PUT(request, { params }) {
-  const adminKey = request.headers.get("x-admin-key");
-  if (!process.env.ADMIN_KEY || adminKey !== process.env.ADMIN_KEY) {
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
-
   const resolved = await params;
   const { id } = resolved;
 
@@ -29,5 +24,6 @@ export async function PUT(request, { params }) {
 
   return NextResponse.json({ message: "Product updated", product: updated });
 }
+
 
 

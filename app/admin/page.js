@@ -12,7 +12,6 @@ export default function AdminPage() {
     inventory: "",
   });
   const [editingSlug, setEditingSlug] = useState(null);
-  const [adminKey, setAdminKey] = useState(process.env.NEXT_PUBLIC_ADMIN_KEY || "");
 
   async function fetchProducts() {
     const res = await fetch("/api/products");
@@ -40,7 +39,7 @@ export default function AdminPage() {
 
     const res = await fetch(isEditing ? `/api/products/${editingSlug}` : "/api/products", {
       method: isEditing ? "PUT" : "POST",
-      headers: { "Content-Type": "application/json", "x-admin-key": adminKey },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...form,
         price: Number(form.price),
@@ -80,7 +79,7 @@ export default function AdminPage() {
   async function deleteProduct(slug) {
     const ok = confirm("Are you sure you want to delete this product?");
     if (!ok) return;
-    const res = await fetch(`/api/products/${slug}`, { method: "DELETE", headers: { "x-admin-key": adminKey } });
+    const res = await fetch(`/api/products/${slug}`, { method: "DELETE" });
     if (res.ok) {
       alert("🗑️ Product deleted");
       if (editingSlug === slug) cancelEdit();
@@ -95,10 +94,7 @@ export default function AdminPage() {
     <main className="min-h-screen bg-gray-50 p-6">
       <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">Admin Panel</h1>
 
-      <div className="max-w-4xl mx-auto mb-4 flex items-center gap-3">
-        <label className="text-sm text-gray-600">Admin Key</label>
-        <input value={adminKey} onChange={(e)=>setAdminKey(e.target.value)} type="password" placeholder="Enter admin key" className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 shadow-sm w-64" />
-      </div>
+      {/* No admin key required */}
 
       <div className="bg-white shadow-sm border border-gray-200 rounded-lg p-6 max-w-4xl mx-auto mb-10">
         <h2 className="text-xl font-semibold mb-4">{editingSlug ? "Edit Product" : "Add New Product"}</h2>

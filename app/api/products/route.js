@@ -12,10 +12,6 @@ export async function GET() {
 // ✅ POST new product
 export async function POST(request) {
   try {
-    const adminKey = request.headers.get("x-admin-key");
-    if (!process.env.ADMIN_KEY || adminKey !== process.env.ADMIN_KEY) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
     await connectDB();
     const data = await request.json();
 

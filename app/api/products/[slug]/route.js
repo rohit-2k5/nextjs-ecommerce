@@ -19,10 +19,6 @@ export async function GET(request, { params }) {
 }
 
 export async function PUT(request, { params }) {
-  const adminKey = request.headers.get("x-admin-key");
-  if (!process.env.ADMIN_KEY || adminKey !== process.env.ADMIN_KEY) {
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
   const resolvedParams = await params;
   const { slug } = resolvedParams;
 
@@ -52,10 +48,6 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-  const adminKey = request.headers.get("x-admin-key");
-  if (!process.env.ADMIN_KEY || adminKey !== process.env.ADMIN_KEY) {
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
   const resolvedParams = await params;
   const { slug } = resolvedParams;
 

@@ -26,9 +26,7 @@ Create a .env.local file in the root directory with the following:
 bash
 Copy code
 MONGODB_URI=your-mongodb-connection-string
-ADMIN_KEY=your-strong-admin-key
-🧠 ADMIN_KEY is required for all admin API routes (POST, PUT, DELETE).
-Send it as an x-admin-key header when performing admin operations.
+ # No admin key needed. All API routes are open in this demo.
 
 🧩 Rendering Strategies
 Page	Type	Description
@@ -41,10 +39,10 @@ Page	Type	Description
 Method	Endpoint	Description	Auth Required
 GET	/api/products	Fetch all products	❌
 GET	/api/products/[slug]	Fetch a single product by slug	❌
-POST	/api/products	Add a new product	✅ (x-admin-key)
-PUT	/api/products/[slug]	Update product by slug	✅ (x-admin-key)
-PUT	/api/products/id/[id]	Update product by ID	✅ (x-admin-key)
-DELETE	/api/products/[slug]	Delete product by slug	✅ (x-admin-key)
+ POST	/api/products	Add a new product	❌
+ PUT	/api/products/[slug]	Update product by slug	❌
+ PUT	/api/products/id/[id]	Update product by ID	❌
+ DELETE	/api/products/[slug]	Delete product by slug	❌
 
 🧱 Data Model
 json
