@@ -2,7 +2,7 @@
 **Author:** Rohit kumar  
 **Date:** October 31, 2025  
 
-visit : "";
+visit : "https://nextjs-ecommerce-mjxw.vercel.app/";
 
 A modern full-stack **E-Commerce Web Application** built using **Next.js (App Router)**, **MongoDB**, and **Tailwind CSS**.  
 It demonstrates product listing, filtering, search, sorting, and an admin dashboard for product management (CRUD).  
@@ -20,14 +20,6 @@ Copy code
 npm run dev
 Then open your browser at 👉 http://localhost:3000
 
-⚙️ Environment Variables
-Create a .env.local file in the root directory with the following:
-
-bash
-Copy code
-MONGODB_URI=your-mongodb-connection-string
- # No admin key needed. All API routes are open in this demo.
-
 🧩 Rendering Strategies
 Page	Type	Description
 /	Static Site Generation (SSG)	Displays all products with search and price sorting handled on the client.
@@ -35,14 +27,6 @@ Page	Type	Description
 /dashboard	Server-Side Rendering (SSR)	Always fetches the latest product list and stats for admin use.
 /admin	Client-Side Rendering (CSR)	Handles CRUD operations via API routes.
 
-🔗 API Routes
-Method	Endpoint	Description	Auth Required
-GET	/api/products	Fetch all products	❌
-GET	/api/products/[slug]	Fetch a single product by slug	❌
- POST	/api/products	Add a new product	❌
- PUT	/api/products/[slug]	Update product by slug	❌
- PUT	/api/products/id/[id]	Update product by ID	❌
- DELETE	/api/products/[slug]	Delete product by slug	❌
 
 🧱 Data Model
 json
