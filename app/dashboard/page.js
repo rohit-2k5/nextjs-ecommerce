@@ -1,25 +1,15 @@
-import { notFound } from "next/navigation";
+import { connectDB } from "@/lib/db";
+import { Product } from "@/models/Product";
 
 export const dynamic = "force-dynamic"; // always fetch fresh data
 
 async function getProducts() {
   try {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}` // On Vercel
-      : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"; // Local
-
-    const res = await fetch(`${baseUrl}/api/products`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      console.error("❌ Failed to fetch products:", res.statusText);
-      return [];
-    }
-
-    return res.json();
+    await connectDB();
+    const products = await Product.find().lean();
+    return JSON.parse(JSON.stringify(products));
   } catch (error) {
-    console.error("❌ Error fetching products:", error.message);
+    console.error("❌ Error fetching products from DB:", error.message);
     return [];
   }
 }
